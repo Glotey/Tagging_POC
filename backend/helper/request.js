@@ -27,12 +27,14 @@ const uploadAudio = async (req, res) => {
   }
 const updateAudioStatus =  async (req, res) => {
     const { id } = req.params;
+    const {actual_text, train_ready} = req.body;
     try {
       const audio = await Audio.findById(id);  
       if (!audio) {
         return res.status(404).json({ error: 'Audio file not found' });
       }
-      audio.train_ready = true;
+      audio.train_ready = train_ready;
+      audio.actual_text = actual_text;
         await audio.save();
       res.status(200).json({ message: 'Audio file train_ready status updated' });
     } catch (error) {

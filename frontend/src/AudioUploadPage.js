@@ -1,6 +1,7 @@
 import React, { useState, useEffect , useRef} from 'react';
 import './Audio.css'
 import NoDataFound from './noData';
+import Waveform from './waveUI';
 const AudioUploadPage = () => {
   const [audioFiles, setAudioFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -69,7 +70,7 @@ const AudioUploadPage = () => {
   console.log(audioFiles)
   return (
     <div className="container">
-      <div className="upload-container">
+      {/* <div className="upload-container">
         <h2>Upload Audio</h2>
         <form className="upload-form">
           <label htmlFor="upload-input" className="upload-label">
@@ -86,10 +87,11 @@ const AudioUploadPage = () => {
             Upload
           </button>
         </form>
-      </div>
-      <div className="listing-container">
+      </div> */}
+      <div className="item-container">
+        <div className='listing-container'>
         <h2>Audio Listing</h2>
-          { (!audioFiles.length > 0) ? 
+          { (audioFiles.length > 0) ? 
           audioFiles.map((audio) => (
             <div key={audio._id} className="audio-item">
             <div className="audio-info">
@@ -105,11 +107,21 @@ const AudioUploadPage = () => {
               <source src={`http://localhost:5002/files/${audio.originalName}`} type="audio/mpeg"/>
                 </audio>
             </div>
+            <input 
+            style={{padding: "20px"}}
+            placeholder="Enter Transcribed Text"
+            value=""
+            />
+
           </div>
             )) 
           :
             <NoDataFound/>
           }
+      </div>
+      </div>
+      <div className='upload-container'>
+      {audioFiles.length && <Waveform audioUrl={`http://localhost:5002/files/${audioFiles?.[2].filePath}`}/>}
       </div>
     </div>
   );

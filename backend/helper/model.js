@@ -8,6 +8,7 @@ const audioSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  actual_text: String,
 });
 
 module.exports= mongoose.model("Audio" , audioSchema)
