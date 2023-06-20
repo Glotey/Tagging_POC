@@ -1,0 +1,24 @@
+.tabs {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 40%;
+    font-weight: 700;
+  }
+  
+  .tab.active {
+    background-color:#2196f3 ;
+    color: white;
+    font-weight: 700;
+    border-bottom: 2px solid black;
+    border-radius: 10px 10px 0px 0px;
+  }
+  
+  .tab-content {
+    margin-top: 10px;
+  }
+  

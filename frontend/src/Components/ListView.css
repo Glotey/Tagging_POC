@@ -1,0 +1,52 @@
+.audio-list {
+    flex-basis: 30%;
+    height: 90vh;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .audioListHead h2 {
+    font-size: 20px; 
+  }
+  .audioListHead p{
+    font-size: 20px;
+    color:black;
+    font-weight: 600;
+
+  }
+  .audioListHead{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lightblue;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 2px 10px;
+    text-align: center;
+  }
+  
+  .audio-list ul {
+    height:70vh;
+    list-style-type: none;
+    padding: 0;
+    overflow-y: scroll;
+  }
+  
+  .audio-list li {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #2196f3;
+  }
+  
+  .audio-list li:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .audio-list li.selected {
+    background-color: #2196f3;
+    color: #fff;
+  }

@@ -1,0 +1,25 @@
+.audio-player audio {
+    /* Custom styles for the audio player */
+    width: 70vw;
+    height: 40px;
+    background:linear-gradient(to right,  grey, #f2f2f2);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .audio-player audio::-webkit-media-controls-panel {
+    height: 40px;
+    background:linear-gradient(to left,  #2196f3, #f2f2f2);
+    border-radius: 5px;
+  }
+  
+  .audio-player audio::-webkit-media-controls-play-button,
+  .audio-player audio::-webkit-media-controls-pause-button {
+    /* Styling for the play/pause button */
+    background-color: #f2f2f2;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+  
