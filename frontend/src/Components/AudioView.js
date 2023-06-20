@@ -8,10 +8,11 @@ const AudioView = ({ref,onSubmit,value,onChange,url , audioFile  }) => {
     <div className="waveform-container">
       {audioFile ? (
         <>
-          <AudiComp
+          {/* <AudiComp
           ref={ref}
           source={url}
-          />
+          /> */}
+           <WaveformPlayer audioUrl={url}/>
           <div id="text-area">
             <textarea
               name="transcript"
@@ -22,7 +23,7 @@ const AudioView = ({ref,onSubmit,value,onChange,url , audioFile  }) => {
               value={value}
             />
           </div>
-          {/* <WaveformPlayer audioUrl={url}/> */}
+         
           <button onClick={onSubmit}>Submit transcription</button>
         </>
       ) : (

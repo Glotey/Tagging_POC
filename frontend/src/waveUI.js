@@ -7,63 +7,58 @@ const WaveformPlayer = ({ audioUrl }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
   const [waveformIsPlaying, setWaveformIsPlaying] = useState(false);
-
-  useEffect(() => {
-    const waveform = WaveSurfer.create({
-      container: waveformRef.current,
-      waveColor: 'violet',
-      progressColor: 'purple',
-      url: audioUrl
-    });
-
-    waveform.load(audioUrl);
-
-    waveform.on('play', () => {
-      waveform.play()
-    });
-
-    waveform.on('pause', () => {
-      setWaveformIsPlaying(false);
-    });
-
-    if (isLooping) {
-      waveform.on('finish', () => {
-        waveform.play();
-      });
-    } else {
-      waveform.on('finish', () => {
-        setIsPlaying(false);
-      });
+  let wavesurfer;
+  console.log(audioUrl,"audioUrl")
+  
+  useEffect(()=>{
+    initializeWaveform();
+  return () => {
+    if (wavesurfer) {
+      wavesurfer.destroy();
     }
-
-    return () => waveform.destroy();
-  }, [audioUrl, isLooping]);
-
-  const togglePlay = () => {
-    const waveform = waveformRef.current;
-    console.log(waveform,"wave")
-    if (waveformIsPlaying) {
-      waveform.pause();
-    } else {
-      waveform.play();
-    }
-    setIsPlaying(!waveformIsPlaying);
   };
 
-  const toggleLoop = () => {
-    setIsLooping(!isLooping);
+  },[audioUrl])
+  const initializeWaveform = () => {
+    if (waveformRef.current) {
+      if(wavesurfer){
+        wavesurfer.destroy();
+      }
+       wavesurfer = WaveSurfer.create({
+        container: waveformRef.current,
+        waveColor: 'blue',
+        progressColor: 'purple',
+        barWidth: 2,
+        cursorWidth: 1,
+        responsive: true,
+      });
+      wavesurfer.load(audioUrl);
+      return wavesurfer;
+    }
+
+    return null;
+  };
+  const handlePlay = () => {
+    if (wavesurfer) {
+      wavesurfer.play();
+    }
   };
 
+  const handlePause = () => {
+    if (wavesurfer) {
+      wavesurfer.pause();
+    }
+  };
   return (
+    <>
     <div className="waveform-player">
       <div ref={waveformRef} className="waveform" />
-      <div className="controls">
-        <button className={`play-button ${waveformIsPlaying ? 'pause' : 'play'}`} onClick={togglePlay} />
-        <button className={`loop-button ${isLooping ? 'active' : ''}`} onClick={toggleLoop}>
-          Loop
-        </button>
-      </div>
     </div>
+    <div className="controls">
+     <button onClick={handlePlay}>Play</button>
+      <button onClick={handlePause}>Pause</button>
+  </div>
+  </>
   );
 };
 

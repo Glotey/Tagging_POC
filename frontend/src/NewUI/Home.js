@@ -3,7 +3,6 @@ import AudioView from "../Components/AudioView";
 import ListView from "../Components/ListView";
 import { fetchAudioFiles, handleUploadTranscribe } from "../helpers/request";
 import NoDataFound from "../noData";
-import Waveform from "../waveUI";
 import "./home.css";
 const AudioPage = () => {
   const [selectedAudio, setSelectedAudio] = useState(null);

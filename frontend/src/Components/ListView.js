@@ -10,7 +10,6 @@ const AudioList = ({handleChange , files , selectedAudio}) => {
     const completed = files?.filter((file)=>{
       if(file?.train_ready == true) return file;
     })
-    console.log(pending,"pending")
     const tabs = [
       {
         label: 'Pending',
