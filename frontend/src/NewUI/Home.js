@@ -49,8 +49,27 @@ const AudioPage = () => {
       actual_text: text,
       train_ready: true,
     };
+    if(text && text === "Welcome to transcribe.") {
+    const result = window.confirm('Are you sure you want to proceed?');
+    if (result) {
+      await handleUploadTranscribe(selectedAudio?._id, data);
+      await fetchAudios();
+      return
+    }
+    }
+    if(!text){
+    const result = window.confirm('No Text is entered . Are you sure you want to upload data?');
+    if (result) {
+      await handleUploadTranscribe(selectedAudio?._id, data);
+      await fetchAudios();
+      return
+    }
+    else{
+      return
+    }
+    }   
     await handleUploadTranscribe(selectedAudio?._id, data);
-    await fetchAudios();
+ 
   };
   const handleTextChange = (event) => {
     setText(event.target.value);

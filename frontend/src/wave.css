@@ -2,9 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 5px;
     justify-content: center;
-    width: 70vw;
+    width: 72vw;
     height: 130px;
+    background-color: rgb(0, 0, 0, 0.6);
   }
   
   .waveform {
@@ -13,48 +15,31 @@
   }
   
   .controls {
+    width: 72vw;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .controls button{
+    width: 150px;
+  }
+  .playback-speed-bar {
+    display: flex;
+    align-items: center;
     margin-top: 10px;
   }
   
-  .play-button {
-    width: 50px;
-    height: 50px;
+  label {
     margin-right: 10px;
-    background-color: #808080;
-    border: none;
-    border-radius: 50%;
-    outline: none;
   }
   
-  .play-button.play {
-    background-color: #4caf50;
+  input[type="range"] {
+    width: 200px;
   }
   
-  .play-button.pause::before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 16px;
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 15px solid white;
-  }
-  
-  .loop-button {
-    background-color: #808080;
-    border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  .loop-button.active {
-    background-color: #4caf50;
+  span {
+    margin-left: 10px;
   }
   
